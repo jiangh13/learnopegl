@@ -1,0 +1,5 @@
+如果报错fatal: unable to access 'https://github.com/jiangh13/learnopengl.git/': OpenSSL SSL_read: Connection was reset, errno 10054
+输入: git config --global http.sslVerify "false"
+在github中配置好token后，使用
+git remote set-url origin https://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@github.com/jiangh13/learnopegl.git
+然后git push
