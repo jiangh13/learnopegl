@@ -16,9 +16,9 @@
 				"-lglfw3dll",
 				"${workspaceFolder}/glfw3.dll"
 				],
-		"options": {
-		  "cwd": "D:\\Programs\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin"
-		},
+		// "options": {
+		//   "cwd": "D:\\Programs\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin"
+		// },
 		"problemMatcher": ["$gcc"],
 		"group": {
 		  "kind": "build",
