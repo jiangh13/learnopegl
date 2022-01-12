@@ -68,7 +68,7 @@ int main()
 
     glEnable(GL_DEPTH_TEST);
 
-    Shader lightingShader("./res/vsfs/2.lighting/4.1.lighting_maps.vs","./res/vsfs/2.lighting/4.1.lighting_maps.fs");
+    Shader lightingShader("./res/vsfs/2.lighting/4.2.lighting_maps.vs","./res/vsfs/2.lighting/4.2.lighting_maps.fs");
     Shader lightCubeShader("./res/vsfs/2.lighting/1.light_cube.vs", "./res/vsfs/2.lighting/1.light_cube.fs");
 
 
@@ -145,11 +145,14 @@ int main()
     // load textures
     std::string img_path = "./res/img/container2.png";
     unsigned int diffuseMap = loadTexture(img_path.c_str());
+    img_path = "./res/img/container2_specular.png";
+    unsigned int specularMap = loadTexture(img_path.c_str());
 
     // shader configuration
     // --------------------
     lightingShader.use();
     lightingShader.setInt("material.diffuse", 0);
+    lightingShader.setInt("material.specular", 1);
 
     while(!glfwWindowShouldClose(window))
     {
@@ -172,7 +175,6 @@ int main()
         lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
         // material properties
-        lightingShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
         lightingShader.setFloat("material.shininess", 64.0f);
 
         // view/projection transformation
@@ -188,6 +190,8 @@ int main()
         // bind diffuse map
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, diffuseMap);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, specularMap);
 
         // render the cube
         glBindVertexArray(cubeVAO);
