@@ -14,6 +14,8 @@
                 "${workspaceFolder}/lib/",		
 				"-lglad",
 				"-lglfw3dll",
+				"-lzlibstatic",
+				"-l'assimp.dll'",
 				"${workspaceFolder}/glfw3.dll"
 				],
 		// "options": {
