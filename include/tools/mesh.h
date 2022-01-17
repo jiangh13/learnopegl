@@ -6,7 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "tools/shader_s.h"
 
-#inlcude <string>
+#include <string>
 #include <vector>
 
 using namespace std;
@@ -45,7 +45,7 @@ public:
     unsigned int VAO;
 
     // constructor
-    Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures):
+    Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures)
     {
         this->vertices = vertices;
         this->indices = indices;
