@@ -74,7 +74,7 @@ int main()
     // build and compile shaders
     // -------------------------
     Shader shader("./res/vsfs/4.advanced_opengl/5.1.framebuffers.vs", "./res/vsfs/4.advanced_opengl/5.1.framebuffers.fs");
-    Shader screenShader("./res/vsfs/4.advanced_opengl/5.1.framebuffers_screen.vs", "./res/vsfs/4.advanced_opengl/5.1.framebuffers_screen.fs");
+    Shader screenShader("./res/vsfs/4.advanced_opengl/5.1.framebuffers_screen.vs", "./res/vsfs/4.advanced_opengl/5.1.framebuffers_screen_kernel_edge.fs");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -215,7 +215,7 @@ int main()
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     
     // draw as wireframe
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     // render loop
     // -----------
@@ -377,8 +377,10 @@ unsigned int loadTexture(char const * path)
         glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
 
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);        
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
